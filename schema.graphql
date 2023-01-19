@@ -1,0 +1,57 @@
+type Actor {
+  firstName: String!
+  fullName: String!
+  lastName: String!
+}
+
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type Movie {
+  actors: [Actor!]!
+  duration: Int @deprecated(reason: "Use deprecationInSeconds field")
+  durationInSeconds: Int
+  featured: Boolean!
+  genre: String!
+  name: String!
+  producer: Producer!
+  rating: Float!
+  releasedAt: ISO8601DateTime!
+}
+
+type Mutation {
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
+
+type Producer {
+  firstName: String!
+  fullName: String!
+  lastName: String!
+}
+
+type Query {
+  """
+  List of actors
+  """
+  actors: [Actor!]!
+
+  """
+  Movie
+  """
+  movie(id: ID!): Movie
+
+  """
+  List of movies
+  """
+  movies: [Movie!]!
+
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
